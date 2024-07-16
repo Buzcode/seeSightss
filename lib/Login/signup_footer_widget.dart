@@ -17,23 +17,23 @@ class SignUpFooter extends StatelessWidget {
         SizedBox(
           width: double.infinity,
           child: OutlinedButton.icon(
-              onPressed: () {}, 
-              icon: const Image(
-                  image: AssetImage(GoogleLogo),
-                width: 15,
-              ), 
-              label: Text(tSignInWithGoogle.toUpperCase()),
+            onPressed: () {},
+            icon: const Image(
+              image: AssetImage(GoogleLogo),
+              width: 15,
+            ),
+            label: Text(tSignInWithGoogle.toUpperCase()),
           ),
         ),
         TextButton(
           onPressed: () => Get.to(() => const SignIn()),
-            child: Text.rich(TextSpan(children:[
-             TextSpan(
-               text: tAlreadyHaveAnAccount,
-               style: Theme.of(context).textTheme.bodyLarge,
-             ),
-              TextSpan(text: tLogin.toUpperCase())
-            ])),
+          child: Text.rich(TextSpan(children:[
+            TextSpan(
+              text: tAlreadyHaveAnAccount,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            TextSpan(text: tLogin.toUpperCase())
+          ])),
         )
       ],
     );

@@ -1,31 +1,34 @@
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:seesights/pages/auth.dart';
+import 'package:seesights/firebase_options.dart';
+import 'package:seesights/pages/authentication_repository.dart';
+import 'package:seesights/pages/search_flight.dart';
 import 'package:seesights/pages/splash_screen.dart';
 import 'package:seesights/theme.dart';
+import 'package:seesights/pages/greeting_page.dart';
 
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  Firebase.initializeApp().then((value) => Get.put(Auth()));
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Get.put(AuthenticationRepository());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget{
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  //this widget is the root of your application
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return GetMaterialApp(
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      //change
-      home: SplashScreen(),
+      home:SearchFlightPage(),
     );
   }
 }

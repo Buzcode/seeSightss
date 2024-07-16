@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:seesights/Login/sign_in.dart';
-import 'package:seesights/Login/sign_up.dart';
+import 'package:seesights/Login/sign_up_screen.dart';
 import 'package:seesights/color.dart';
 import 'package:seesights/image_strings.dart';
 import 'package:seesights/sizes.dart';

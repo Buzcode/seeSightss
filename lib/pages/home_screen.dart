@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:seesights/pages/activities_page.dart';
 import 'package:seesights/pages/search_flight.dart';
 import 'package:seesights/widget/destination_careousel.dart';
 
@@ -109,10 +110,15 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: (int value) {
           setState(() {
             _currentTab = value;
-            if (_currentTab == 0) {
+            if (_currentTab == 1) { // Index 1 for Activities
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FlightSearchUI()),
+                MaterialPageRoute(builder: (context) => ActivitiesPage()),
+              );
+            } else if (_currentTab == 0) { // Index 0 for Flight Search
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SearchFlightPage()),
               );
             }
           });

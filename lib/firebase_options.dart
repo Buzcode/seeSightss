@@ -16,13 +16,13 @@ import 'package:flutter/foundation.dart'
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-    if (kIsWeb) {
+   /* if (kIsWeb) {
       return web;
-    }
+    }*/
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
-      case TargetPlatform.iOS:
+    /*  case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
         return macos;
@@ -32,7 +32,7 @@ class DefaultFirebaseOptions {
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
           'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        );*/
       default:
         throw UnsupportedError(
           'DefaultFirebaseOptions are not supported for this platform.',
@@ -40,48 +40,48 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
+ /* static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyA1nUhtRtyO6-qo-Sfm8O63xaevJDVyG4o',
     appId: '1:64402100539:web:c4979e0a9f63e95484a71e',
     messagingSenderId: '64402100539',
     projectId: 'seesights-19c31',
     authDomain: 'seesights-19c31.firebaseapp.com',
     storageBucket: 'seesights-19c31.appspot.com',
-  );
+  );*/
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD4OisUmB6Q3IGj_Px1a68ASvBK0B0shoI',
-    appId: '1:64402100539:android:4cb4f1d5bcaf0da084a71e',
-    messagingSenderId: '64402100539',
-    projectId: 'seesights-19c31',
-    storageBucket: 'seesights-19c31.appspot.com',
+    apiKey: 'AIzaSyCDbcKUDrVVyp5E6xWaKVBeB7h0MA9M58c', // From google-services.json
+    appId: '1:365696318523:android:b5cd1e067138199cc2701e', // From google-services.json
+    messagingSenderId: '365696318523', // From google-services.json
+    projectId: 'seesight', // From google-services.json
+    storageBucket: 'seesight.appspot.com', // From google-services.json
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
+ /* static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyChX3oXVlt8Q91bkCUEMJU_WQpueFcH2UM',
     appId: '1:64402100539:ios:440c05f928ea40bd84a71e',
     messagingSenderId: '64402100539',
     projectId: 'seesights-19c31',
     storageBucket: 'seesights-19c31.appspot.com',
     iosBundleId: 'com.example.seeSights',
-  );
+  );*/
 
-  static const FirebaseOptions macos = FirebaseOptions(
+ /* static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyChX3oXVlt8Q91bkCUEMJU_WQpueFcH2UM',
     appId: '1:64402100539:ios:440c05f928ea40bd84a71e',
     messagingSenderId: '64402100539',
     projectId: 'seesights-19c31',
     storageBucket: 'seesights-19c31.appspot.com',
     iosBundleId: 'com.example.seeSights',
-  );
+  );*/
 
-  static const FirebaseOptions windows = FirebaseOptions(
+  /*static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyA1nUhtRtyO6-qo-Sfm8O63xaevJDVyG4o',
     appId: '1:64402100539:web:0f31c73effbaf0e784a71e',
     messagingSenderId: '64402100539',
     projectId: 'seesights-19c31',
     authDomain: 'seesights-19c31.firebaseapp.com',
     storageBucket: 'seesights-19c31.appspot.com',
-  );
+  );*/
 
 }

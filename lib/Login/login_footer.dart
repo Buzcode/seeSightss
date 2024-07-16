@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:seesights/Login/sign_up.dart';
+import 'package:seesights/Login/sign_up_screen.dart';
 import 'package:seesights/image_strings.dart';
 import 'package:seesights/sizes.dart';
 import 'package:seesights/text_strings.dart';

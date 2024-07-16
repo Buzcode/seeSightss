@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 import 'package:seesights/pages/greeting_page.dart';
 
@@ -13,10 +13,7 @@ class SplashScreenController extends GetxController{
     await Future.delayed(const Duration(milliseconds: 3000));
     animate.value = true;
     await Future.delayed(const Duration(milliseconds: 5000));
-    Get.to(() => const GreetingPage());
-    /*await Future.delayed(const Duration(milliseconds: 10000));
-    Get.to(() => const WelcomeScreen());*/
-    //
+    Get.to(()=>const GreetingPage());
 
   }
 }
