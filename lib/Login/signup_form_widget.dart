@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:seesights/Login/signup_controller.dart';
+import 'package:seesights/Models/user_model.dart';
 import 'package:seesights/sizes.dart';
 import 'package:seesights/text_strings.dart';
 
@@ -54,10 +55,18 @@ class SignUpFormWidget extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  if(formKey.currentState!.validate()){
+                  /*if(formKey.currentState!.validate()){
                     SignupController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
 
-                  }
+                  }*/
+
+                  final user = UserModel(
+                      fullName: controller.fullName.text.trim(),
+                      email: controller.email.text.trim(),
+                      phoneNo:controller.phoneNo.text.trim() ,
+                      password: controller.password.text.trim()
+                  );
+                  SignupController.instance.createUser(user);
                 },
                 child: Text(tSignup.toUpperCase()),
               ),

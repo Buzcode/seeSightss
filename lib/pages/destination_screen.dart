@@ -178,7 +178,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
                                         ),
                                       ),
                                       Text(
-                                        'per pax',
+                                        'per person',
                                         style: TextStyle(
                                           color: Colors.grey,
                                         ),

@@ -48,10 +48,14 @@ class _BookingPageState extends State<BookingPage> {
               ),
             ),
             const SizedBox(height: 16),
-            Image.asset(
-              widget.activity.imageUrl,
-              height: 200,
-              fit: BoxFit.cover,
+            // Rounder Image
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16.0),
+              child: Image.asset(
+                widget.activity.imageUrl,
+                height: 200,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -71,6 +75,7 @@ class _BookingPageState extends State<BookingPage> {
               ),
             ),
             const SizedBox(height: 8),
+            // Bluish Date Button
             ElevatedButton(
               onPressed: () {
                 showDatePicker(
@@ -84,9 +89,19 @@ class _BookingPageState extends State<BookingPage> {
                   });
                 });
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent[100], // Light bluish background
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12), // Shorter height
+              ),
               child: Text(_selectedDate != null
                   ? '${_selectedDate!.toLocal().toString().substring(0, 10)}'
-                  : 'Choose a date'),
+                  : 'Choose a date',
+                style: const TextStyle(
+                  color: Colors.white, // Dark grey text
+                  fontSize: 16, // Bigger font size
+                  fontWeight: FontWeight.bold, // Bold font
+                ),
+              ),
             ),
             const SizedBox(height: 16),
             const Text(
@@ -121,11 +136,11 @@ class _BookingPageState extends State<BookingPage> {
               ],
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Total Price',
-              style: TextStyle(
+            // Total Price with different styles
+            Text(
+              'Total', // Not bold
+              style: const TextStyle(
                 fontSize: 18,
-                fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 8),
@@ -133,16 +148,21 @@ class _BookingPageState extends State<BookingPage> {
               '\$${(widget.activity.price * _selectedPassengers).toStringAsFixed(2)}',
               style: const TextStyle(
                 fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.bold, // Price is bold
               ),
             ),
             const SizedBox(height: 32),
+            // Confirm Booking Button
             ElevatedButton(
               onPressed: _confirmBooking,
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
-                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
-                textStyle: const TextStyle(fontSize: 18),
+                backgroundColor: Colors.blueAccent[100], // Bluish color like the Date button
+                padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 40), // Wider padding
+                textStyle: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold, // Bold font
+                  color: Colors.black, // Darker font color
+                ),
               ),
               child: const Text('Confirm Booking'),
             ),
@@ -273,7 +293,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
+                  backgroundColor: Colors.blueAccent[100],
                   padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
                   textStyle: const TextStyle(fontSize: 18),
                 ),

@@ -1,140 +1,149 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
 
-class PaymentPage extends StatefulWidget {
-  final String fullName;
-  final String passportNumber;
-  final String email;
-  final String phone;
-
-  PaymentPage({
-    required this.fullName,
-    required this.passportNumber,
-    required this.email,
-    required this.phone,
-  });
-
-  @override
-  _PaymentPageState createState() => _PaymentPageState();
-}
-
-class _PaymentPageState extends State<PaymentPage> {
-  final _formKey = GlobalKey<FormState>();
-  final _cardNumberController = TextEditingController();
-  final _expiryDateController = TextEditingController();
-  final _cvvController = TextEditingController();
-  final _cardHolderNameController = TextEditingController();
-
-  @override
-  void dispose() {
-    _cardNumberController.dispose();
-    _expiryDateController.dispose();
-    _cvvController.dispose();
-    _cardHolderNameController.dispose();
-    super.dispose();
-  }
-
+class PaymentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Payment',
-          style: GoogleFonts.overpass(color: Colors.black, fontSize: 32),
-        ),
-        backgroundColor: Colors.white,
-        iconTheme: IconThemeData(color: Colors.black),
-        elevation: 0,
+        title: Text('Payment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: [
-              Text('Full Name: ${widget.fullName}'),
-              Text('Passport Number: ${widget.passportNumber}'),
-              Text('Email: ${widget.email}'),
-              Text('Phone: ${widget.phone}'),
-              buildTextField(
-                controller: _cardNumberController,
+        child: Column(
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(
                 labelText: 'Card Number',
-                keyboardType: TextInputType.number,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter your card number';
-                  }
-                  return null;
-                },
+                border: OutlineInputBorder(),
+                hintText: 'XXXX XXXX XXXX XXXX',
               ),
-              buildTextField(
-                controller: _expiryDateController,
-                labelText: 'Expiry Date (MM/YY)',
-                keyboardType: TextInputType.datetime,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter the expiry date';
-                  }
-                  return null;
-                },
+              keyboardType: TextInputType.number,
+              inputFormatters: [
+                FilteringTextInputFormatter.digitsOnly,
+                LengthLimitingTextInputFormatter(16),
+                CardNumberInputFormatter(),
+              ],
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Expiry Date',
+                      border: OutlineInputBorder(),
+                      hintText: 'MM/YY',
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4),
+                      ExpiryDateInputFormatter(),
+                    ],
+                  ),
+                ),
+                SizedBox(width: 16),
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      labelText: 'CVV',
+                      border: OutlineInputBorder(),
+                      hintText: 'XXX',
+                    ),
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(3),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 16),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Cardholder Name',
+                border: OutlineInputBorder(),
               ),
-              buildTextField(
-                controller: _cvvController,
-                labelText: 'CVV',
-                keyboardType: TextInputType.number,
-                obscureText: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter the CVV';
-                  }
-                  return null;
-                },
+              keyboardType: TextInputType.text,
+            ),
+            SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: () {
+                // Handle payment processing here
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Payment Successful'),
+                      content: Text('Your payment has been processed successfully.'),
+                      actions: <Widget>[
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: Text('OK'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text('Pay Now'),
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
               ),
-              buildTextField(
-                controller: _cardHolderNameController,
-                labelText: 'Card Holder Name',
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter the card holder name';
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Process payment
-                  }
-                },
-                child: Text('Pay Now'),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
+}
 
-  Widget buildTextField({
-    required TextEditingController controller,
-    required String labelText,
-    TextInputType keyboardType = TextInputType.text,
-    bool obscureText = false,
-    FormFieldValidator<String>? validator,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextFormField(
-        controller: controller,
-        keyboardType: keyboardType,
-        obscureText: obscureText,
-        validator: validator,
-        decoration: InputDecoration(
-          labelText: labelText,
-          border: OutlineInputBorder(),
-        ),
-      ),
+class CardNumberInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    final newText = newValue.text.replaceAll(RegExp(r'\D'), '');
+    final length = newText.length;
+    String formattedText = '';
+
+    for (int i = 0; i < length; i++) {
+      if (i % 4 == 0 && i != 0) {
+        formattedText += ' ';
+      }
+      formattedText += newText[i];
+    }
+
+    return newValue.copyWith(
+      text: formattedText,
+      selection: TextSelection.collapsed(offset: formattedText.length),
+    );
+  }
+}
+
+class ExpiryDateInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    var newText = newValue.text.replaceAll(RegExp(r'\D'), '');
+    final length = newText.length;
+
+    if (length == 0) {
+      return newValue.copyWith(text: '');
+    }
+
+    if (length > 4) {
+      newText = newText.substring(0, 4);
+    }
+
+    if (length >= 3) {
+      newText = newText.substring(0, 2) + '/' + newText.substring(2);
+    }
+
+    return newValue.copyWith(
+      text: newText,
+      selection: TextSelection.collapsed(offset: newText.length),
     );
   }
 }

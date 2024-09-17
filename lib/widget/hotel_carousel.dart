@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:seesights/Models/hotel_model.dart';
 
-
 class HotelCarousel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -58,30 +57,23 @@ class HotelCarousel extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(24.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                hotel.name,
+                                hotel.name, // Use hotel.name directly
                                 style: TextStyle(
-                                  fontSize: 22.0,
+                                  fontSize: 18.0, // Reduced font size
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 1.2,
                                 ),
                               ),
                               SizedBox(height: 2.0),
                               Text(
-                                hotel.address,
-                                style: TextStyle(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              SizedBox(height: 2.0),
-                              Text(
                                 '\$${hotel.price} / night',
                                 style: TextStyle(
-                                  fontSize: 18.0,
+                                  fontSize: 14.0, // Reduced font size
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),

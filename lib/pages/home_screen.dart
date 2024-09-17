@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:seesights/pages/Search_Places.dart';
 import 'package:seesights/pages/activities_page.dart';
+import 'package:seesights/pages/car_booking.dart';
 import 'package:seesights/pages/search_flight.dart';
 import 'package:seesights/widget/destination_careousel.dart';
-
-import '../widget/hotel_carousel.dart';
+import 'package:seesights/widget/hotel_carousel.dart';
+import 'package:seesights/pages/hotel_card.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,10 +17,10 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   int _currentTab = 0;
   List<IconData> _icons = [
-    FontAwesomeIcons.plane,
+    FontAwesomeIcons.city,
     FontAwesomeIcons.bed,
-    FontAwesomeIcons.personWalking,
-    FontAwesomeIcons.personBiking,
+    FontAwesomeIcons.bowlRice,
+    FontAwesomeIcons.car,
   ];
 
   Widget _buildIcon(int index) {
@@ -26,6 +28,23 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: () {
         setState(() {
           _selectedIndex = index;
+          if (index == 0) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SearchPage()),
+            );
+          }
+          else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HotelScreen()),
+            );
+          } else if (index == 3) { // Car Booking
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CarBookingPage()),
+            );
+          }
         });
       },
       child: Container(
@@ -77,7 +96,11 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.black,
             ),
             onPressed: () {
-              // Handle profile icon tap
+              // Navigate to SearchPage
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SearchPage()),
+              );
             },
           ),
         ],
@@ -110,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: (int value) {
           setState(() {
             _currentTab = value;
-            if (_currentTab == 1) { // Index 1 for Activities
+            if (_currentTab == 1) {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ActivitiesPage()),
@@ -126,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
+              Icons.airplanemode_active,
               size: 30.0,
             ),
             label: 'Search',

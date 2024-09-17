@@ -90,11 +90,14 @@ class ActivityCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Image with constrained height
-          Image.asset(
-            activity.imageUrl,
-            height: 120, // Constrain image height
-            fit: BoxFit.cover,
+          // Image with constrained height and rounded corners
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12.0), // Add rounded corners
+            child: Image.asset(
+              activity.imageUrl,
+              height: 120, // Constrain image height
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(16.0),
@@ -138,6 +141,11 @@ class ActivityCard extends StatelessWidget {
                 // You can navigate to a booking page or display a dialog.
                 print('Booking ${activity.name}');
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.blueAccent[100], // Set button background color
+                foregroundColor: Colors.white, // Set text color to white
+                textStyle: const TextStyle(fontSize: 16.0), // Increase font size
+              ),
               child: const Text('Book Now'),
             ),
           ),

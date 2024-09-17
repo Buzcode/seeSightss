@@ -5,8 +5,6 @@ import 'package:seesights/colors.dart';
 import 'package:seesights/pages/welcome_screen.dart';
 import 'package:seesights/widget/app_large_text.dart';
 import 'package:seesights/widget/app_text.dart';
-import 'package:seesights/widget/button.dart';
-
 
 class GreetingPage extends StatefulWidget {
   const GreetingPage({Key? key});
@@ -20,6 +18,18 @@ class _GreetingPageState extends State<GreetingPage> {
     "sunset.png",
     "scenery.png",
     "mountain.png",
+  ];
+
+  List<String> titles = [
+    "Mountain Hiking",
+    "Ocean Shores",
+    "Frozen Worlds",
+  ];
+
+  List<String> tips = [
+    "• Pack warm clothes.\n• Wear comfortable shoes for hiking.\n• Bring a camera to capture stunning scenery.",
+    "• Protect yourself from the sun with sunscreen and a hat.\n• Pack light clothing and swimwear.\n• Consider snorkeling or diving.",
+    "• Pack layers of warm clothing, including a hat and gloves.\n• Be cautious on icy surfaces.\n• Pack waterproof boots for snowy conditions.",
   ];
 
   @override
@@ -38,63 +48,111 @@ class _GreetingPageState extends State<GreetingPage> {
                 fit: BoxFit.cover,
               ),
             ),
-            child: Container(
-              margin: const EdgeInsets.only(top: 150, left: 20, right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:[
-                  Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-                  AppLargeText(text: "Trips"),
-                  AppText(text: "Mountain", size: 30),
-                  SizedBox(height: 20),
-                  Container(
-                    width: 250,
-                    child: AppText(
-                      text: "A text or quote about Mountain",
-                      color: Appcolors.textColor2,
-                      size: 18,
+            child: Stack(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 150, left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppLargeText(text: "Trips"),
+                          AppText(text: titles[index], size: 30),
+                          SizedBox(height: 20),
+                          Container(
+                            width: 280,
+                            child: Text(
+                              tips[index],
+                              style: TextStyle(
+                                color: Appcolors.textColor2,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                          SizedBox(height: 40),
+                          // Show button only on the last image
+                          if (index == images.length - 1)
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                gradient: LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                    Appcolors.maincolor.withOpacity(0.8),
+                                    Appcolors.maincolor.withOpacity(0.6),
+                                  ],
+                                ),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => WelcomeScreen(),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 40,
+                                    vertical: 15,
+                                  ),
+                                  child: Center(
+                                    child: AppText(
+                                      text: "Next",
+                                      color: Colors.white,
+                                      size: 20,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                // Position the dots at the bottom center
+                Positioned(
+                  bottom: 20,
+                  left: 0,
+                  right: 0,
+                  child: Align(
+                    alignment: Alignment.bottomCenter, // Align to bottom center
+                    child: Row( // Changed to Row for vertical dots
+                      mainAxisAlignment: MainAxisAlignment.center, // Center horizontally
+                      children: List.generate(3, (indexDots) {
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 10), // Add spacing between dots
+                          child: Container(
+                            height: 10, // Make height and width equal for circular dots
+                            width: 10, // Make height and width equal for circular dots
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100), // Make them circular
+                              color: index == indexDots
+                                  ? Appcolors.maincolor
+                                  : Appcolors.maincolor.withOpacity(0.3),
+                            ),
+                          ),
+                        );
+                      }),
                     ),
                   ),
-                  /*SizedBox(height: 20),
-                  Align(
-                    alignment: Alignment.bottomRight, // Adjust alignment here
-                    child: Text(
-                      "Next>>",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 30, // Same size as "Mountain" text
-                      ),
-                    ),
-                  ),*/
-                  SizedBox(height: 40),
-
-                  ElevatedButton(onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context)=> WelcomeScreen()));
-                  },
-                      child: ResponsiveButton(width: 120,),),
-
-                ],
-              ),
-                 //
-                 Column(
-                   children: List.generate(3, (indexDots){
-                     return Container(
-                       margin: const EdgeInsets.only(bottom: 2),
-                       width:8,
-                       height: index == indexDots?25:8,
-                         decoration: BoxDecoration(
-                           borderRadius: BorderRadius.circular(8),
-                           color:index == indexDots?Appcolors.maincolor:Appcolors.maincolor.withOpacity(0.3)
-                         ),
-                     );
-                   }),
-                 )
+                ),
               ],
-            ),
             ),
           );
         },
