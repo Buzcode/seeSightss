@@ -6,7 +6,7 @@ class PaymentPage extends StatefulWidget {
   final DateTime departureDate;
   final int numberOfGuests;
 
-  PaymentPage({
+  const PaymentPage({
     required this.arrivalDate,
     required this.departureDate,
     required this.numberOfGuests,
@@ -21,7 +21,7 @@ class _PaymentPageState extends State<PaymentPage> {
   String _cardNumber = '';
   String _expiryDate = '';
   String _cvv = '';
-  bool _isProcessingPayment = false; // Flag to track payment status
+  bool _isProcessingPayment = false;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +87,7 @@ class _PaymentPageState extends State<PaymentPage> {
                 },
               ),
               const SizedBox(height: 32),
-              // Show a loading indicator if payment is in progress
+
               if (_isProcessingPayment)
                 const CircularProgressIndicator()
               else
@@ -104,8 +104,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           _isProcessingPayment = false; // Reset flag
                         });
                         // TODO: Implement actual payment processing logic here
-                        // This is where you would handle the actual payment processing
-                        // which could involve sending data to a payment gateway, etc.
+
                         print('Payment details:');
                         print('Card Number: $_cardNumber');
                         print('Expiry Date: $_expiryDate');
@@ -116,11 +115,11 @@ class _PaymentPageState extends State<PaymentPage> {
                       });
                     }
                   },
-                  child: Text('Confirm Booking'),
+                  child: const Text('Confirm Booking'),
                 ),
               if (_isProcessingPayment)
-                Padding(
-                  padding: const EdgeInsets.only(top: 16.0),
+                const Padding(
+                  padding:  EdgeInsets.only(top: 16.0),
                   child: Text('Payment in process...', style: TextStyle(fontSize: 16)),
                 ),
             ],

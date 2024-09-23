@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:seesights/pages/activities_page.dart';
-//import '../Models/activity_model.dart';
 
 class BookingPage extends StatefulWidget {
   final Activity activity;
@@ -23,7 +22,7 @@ class _BookingPageState extends State<BookingPage> {
         builder: (context) => PaymentPage(
           activity: widget.activity,
           selectedPassengers: _selectedPassengers,
-          selectedDate: _selectedDate!, // Ensure selectedDate is not null
+          selectedDate: _selectedDate!,
         ),
       ),
     );
@@ -75,7 +74,6 @@ class _BookingPageState extends State<BookingPage> {
               ),
             ),
             const SizedBox(height: 8),
-            // Bluish Date Button
             ElevatedButton(
               onPressed: () {
                 showDatePicker(
@@ -136,7 +134,6 @@ class _BookingPageState extends State<BookingPage> {
               ],
             ),
             const SizedBox(height: 16),
-            // Total Price with different styles
             Text(
               'Total', // Not bold
               style: const TextStyle(
@@ -208,9 +205,9 @@ class _PaymentPageState extends State<PaymentPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Payment Details',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -285,10 +282,7 @@ class _PaymentPageState extends State<PaymentPage> {
                     print('Card Number: $_cardNumber');
                     print('Expiry Date: $_expiryDate');
                     print('CVV: $_cvv');
-                    // ... You would implement your real payment processing logic here ...
-                    // ... Use a payment gateway SDK or a mock system ...
 
-                    // Navigate back to the BookingPage
                     Navigator.of(context).pop();
                   }
                 },

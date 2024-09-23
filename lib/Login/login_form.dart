@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:seesights/Login/forget_pass_bottom_part.dart';
 import 'package:seesights/pages/home_screen.dart';
 import 'package:seesights/text_strings.dart';
 import '../sizes.dart';
+import 'package:seesights/pages/authentication_repository.dart'; // Import new class
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -19,35 +19,35 @@ class _LoginFormState extends State<LoginForm> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscureText = true; // Initially, password is hidden
+  final authRepo = Get.put(AuthenticationRepository());
 
   Future<void> _signInWithEmailAndPassword() async {
     if (_formKey.currentState!.validate()) {
       try {
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: _emailController.text.trim(),
-          password: _passwordController.text.trim(),
+        final userCredential = await authRepo.signInWithEmailAndPassword(
+          _emailController.text.trim(), // Pass the email
+          _passwordController.text.trim(), // Pass the password
         );
-        // Navigate to HomeScreen after successful login
-        Get.to(HomeScreen());
+        if (userCredential != null) {
+          // After successful login, navigate to HomeScreen
+          Get.offAll(() => HomeScreen());
+        }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
-          // User not found, display error message
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('No user found with that email.'))
           );
         } else if (e.code == 'wrong-password') {
-          // Wrong password, display error message
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Wrong password provided.'))
           );
         } else {
-          // Handle other errors
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('An error occurred. Please try again.'))
           );
         }
       } catch (e) {
-        // Handle other exceptions
+
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('An error occurred. Please try again.'))
         );

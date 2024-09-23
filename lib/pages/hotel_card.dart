@@ -25,7 +25,6 @@ class Room {
   });
 }
 
-// This list will hold all your hotel data
 List<Hotel> allHotels = [
   Hotel(
     name: 'Grand Hyatt',
@@ -66,7 +65,7 @@ List<Hotel> allHotels = [
       Room(type: 'Penthouse', price: 500),
     ],
   ),
-  // Add more hotels here...
+
 ];
 
 class HotelScreen extends StatefulWidget {
@@ -80,7 +79,7 @@ class _HotelScreenState extends State<HotelScreen> {
   bool showResults = false;
 
   DateTime _selectedCheckInDate = DateTime.now();
-  DateTime _selectedCheckOutDate = DateTime.now().add(Duration(days: 1));
+  DateTime _selectedCheckOutDate = DateTime.now().add(const Duration(days: 1));
 
   void _searchHotels(String query) {
     setState(() {
@@ -97,7 +96,7 @@ class _HotelScreenState extends State<HotelScreen> {
       context: context,
       initialDate: _selectedCheckInDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if (picked != null && picked != _selectedCheckInDate) {
       setState(() {
@@ -111,7 +110,7 @@ class _HotelScreenState extends State<HotelScreen> {
       context: context,
       initialDate: _selectedCheckOutDate,
       firstDate: _selectedCheckInDate,
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if (picked != null && picked != _selectedCheckOutDate) {
       setState(() {
@@ -124,7 +123,7 @@ class _HotelScreenState extends State<HotelScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Hotel Suggestions',
           style: TextStyle(fontSize: 20),
         ),
@@ -138,7 +137,7 @@ class _HotelScreenState extends State<HotelScreen> {
               onChanged: _searchHotels,
               decoration: InputDecoration(
                 hintText: 'Search by location',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 filled: true,
                 fillColor: Colors.blue.shade100, // Add a light blue fill
                 border: OutlineInputBorder(
@@ -174,7 +173,7 @@ class HotelCard extends StatefulWidget {
   final DateTime checkInDate;
   final DateTime checkOutDate;
 
-  HotelCard({
+  const HotelCard({
     required this.hotel,
     required this.checkInDate,
     required this.checkOutDate,
@@ -210,7 +209,7 @@ class _HotelCardState extends State<HotelCard> {
                 fit: BoxFit.cover,
               ),
             ),
-            Text(widget.hotel.name, style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(widget.hotel.name, style: const TextStyle(fontWeight: FontWeight.bold)),
             Text(widget.hotel.location),
             // Room selection dropdown
             DropdownButton<int>(
@@ -227,21 +226,21 @@ class _HotelCardState extends State<HotelCard> {
             ),
             Text(
               'Price: \$${widget.hotel.rooms[selectedRoomIndex].price}',
-              style: TextStyle(fontWeight: FontWeight.bold), // Make price bold
+              style: const TextStyle(fontWeight: FontWeight.bold), // Make price bold
             ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BookingPage(),
+                    builder: (context) => const BookingPage(),
                   ),
                 );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue[300], // Set button background color
               ),
-              child: Text('Confirm Booking'),
+              child: const Text('Confirm Booking'),
             ),
           ],
         ),

@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:seesights/Login/signup_header.dart';
 import 'package:seesights/image_strings.dart';

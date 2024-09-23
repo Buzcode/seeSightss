@@ -5,16 +5,18 @@ import 'package:seesights/pages/destination_screen.dart';
 
 
 class DestinationCarousel extends StatelessWidget {
+  const DestinationCarousel({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(
+              const Text(
                 'Top Destinations',
                 style: TextStyle(
                   fontSize: 22.0,
@@ -54,7 +56,7 @@ class DestinationCarousel extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  margin: EdgeInsets.all(10.0),
+                  margin: const EdgeInsets.all(10.0),
                   width: 210.0,
                   child: Stack(
                     alignment: Alignment.topCenter,
@@ -69,7 +71,7 @@ class DestinationCarousel extends StatelessWidget {
                             borderRadius: BorderRadius.circular(10.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: const EdgeInsets.all(10.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -77,7 +79,7 @@ class DestinationCarousel extends StatelessWidget {
                                 children: <Widget>[
                                   Text(
                                     '${destination.activities.length} activities',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 22.0,
                                       fontWeight: FontWeight.w600,
                                       letterSpacing: 1.2,
@@ -85,7 +87,7 @@ class DestinationCarousel extends StatelessWidget {
                                   ),
                                   Text(
                                     destination.description,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.grey,
                                     ),
                                   ),
@@ -99,7 +101,7 @@ class DestinationCarousel extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20.0),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black26,
                               offset: Offset(0.0, 2.0),
@@ -129,7 +131,7 @@ class DestinationCarousel extends StatelessWidget {
                                 children: <Widget>[
                                   Text(
                                     destination.city,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 24.0,
                                       fontWeight: FontWeight.w600,
@@ -138,15 +140,15 @@ class DestinationCarousel extends StatelessWidget {
                                   ),
                                   Row(
                                     children: <Widget>[
-                                      Icon(
+                                      const Icon(
                                         FontAwesomeIcons.locationArrow,
                                         size: 10.0,
                                         color: Colors.white,
                                       ),
-                                      SizedBox(width: 5.0),
+                                      const SizedBox(width: 5.0),
                                       Text(
                                         destination.country,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           color: Colors.white,
                                         ),
                                       ),

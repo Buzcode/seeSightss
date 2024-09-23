@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
   int _currentTab = 0;
-  List<IconData> _icons = [
+  final List<IconData> _icons = [
     FontAwesomeIcons.city,
     FontAwesomeIcons.bed,
     FontAwesomeIcons.bowlRice,
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
           if (index == 0) {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SearchPage()),
+              MaterialPageRoute(builder: (context) => const SearchPage()),
             );
           }
           else if (index == 1) {
@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           } else if (index == 3) { // Car Booking
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CarBookingPage()),
+              MaterialPageRoute(builder: (context) => const CarBookingPage()),
             );
           }
         });
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
         decoration: BoxDecoration(
           color: _selectedIndex == index
               ? Theme.of(context).secondaryHeaderColor
-              : Color(0xFFE7EBEE),
+              : const Color(0xFFE7EBEE),
           borderRadius: BorderRadius.circular(30.0),
         ),
         child: Icon(
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
           size: 25.0,
           color: _selectedIndex == index
               ? Theme.of(context).primaryColor
-              : Color(0xFFB4C1C4),
+              : const Color(0xFFB4C1C4),
         ),
       ),
     );
@@ -74,10 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0.0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
         ),
-        title: Padding(
+        title: const Padding(
           padding: EdgeInsets.only(left: 10.0),
           child: Text(
             'What would you\nlike to find?',
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.account_circle,
               size: 30.0,
               color: Colors.black,
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
               // Navigate to SearchPage
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => SearchPage()),
+                MaterialPageRoute(builder: (context) => const SearchPage()),
               );
             },
           ),
@@ -107,9 +107,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 30.0),
+          padding: const EdgeInsets.symmetric(vertical: 30.0),
           children: <Widget>[
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: _icons
@@ -120,10 +120,9 @@ class _HomeScreenState extends State<HomeScreen> {
               )
                   .toList(),
             ),
-            // Commented out widgets for simplicity
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             DestinationCarousel(),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 20.0),
             HotelCarousel(),
           ],
         ),
@@ -136,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
             if (_currentTab == 1) {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ActivitiesPage()),
+                MaterialPageRoute(builder: (context) => const ActivitiesPage()),
               );
             } else if (_currentTab == 0) { // Index 0 for Flight Search
               Navigator.push(
@@ -146,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> {
             }
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(
               Icons.airplanemode_active,

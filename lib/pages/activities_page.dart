@@ -9,7 +9,7 @@ class ActivitiesPage extends StatefulWidget {
 }
 
 class _ActivitiesPageState extends State<ActivitiesPage> {
-  // Sample activity data
+
   final List<Activity> activities = [
     Activity(
       name: 'Hiking',
@@ -47,13 +47,13 @@ class _ActivitiesPageState extends State<ActivitiesPage> {
         title: const Text('Activities'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(6.0), // Add padding to the body
+        padding: const EdgeInsets.all(6.0),
         child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // 2 columns
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
-            childAspectRatio: 0.5, // Adjust aspect ratio for better fit
+            childAspectRatio: 0.5,
           ),
           itemCount: activities.length,
           itemBuilder: (context, index) {
@@ -90,9 +90,8 @@ class ActivityCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Image with constrained height and rounded corners
           ClipRRect(
-            borderRadius: BorderRadius.circular(12.0), // Add rounded corners
+            borderRadius: BorderRadius.circular(12.0),
             child: Image.asset(
               activity.imageUrl,
               height: 120, // Constrain image height
@@ -137,8 +136,6 @@ class ActivityCard extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => BookingPage(activity: activity)),
                 );
-                // Implement booking logic here
-                // You can navigate to a booking page or display a dialog.
                 print('Booking ${activity.name}');
               },
               style: ElevatedButton.styleFrom(

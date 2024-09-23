@@ -13,7 +13,7 @@ class PaymentInfo extends StatelessWidget {
   final String passportNumber;
   final String phone;
 
-  PaymentInfo({
+  const PaymentInfo({super.key,
     required this.destinationFrom,
     required this.destinationTo,
     required this.date,
@@ -39,7 +39,7 @@ class PaymentInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Flight Details',
                 style: TextStyle(
                   fontSize: 24,
@@ -54,7 +54,7 @@ class PaymentInfo extends StatelessWidget {
               Text('Class: $flightClass'),
               Text('Price: \$$price'),
               const SizedBox(height: 16),
-              Text(
+              const Text(
                 'Passenger Information',
                 style: TextStyle(
                   fontSize: 24,
@@ -67,7 +67,7 @@ class PaymentInfo extends StatelessWidget {
               Text('Passport Number: $passportNumber'),
               Text('Phone: $phone'),
               const SizedBox(height: 32),
-              Text(
+              const Text(
                 'Select Payment Method',
                 style: TextStyle(
                   fontSize: 20,
@@ -83,7 +83,7 @@ class PaymentInfo extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaymentPage()),
+                        MaterialPageRoute(builder: (context) => const PaymentPage()),
                       );
                     },
                     child: Container(
@@ -105,7 +105,7 @@ class PaymentInfo extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaymentPage()),
+                        MaterialPageRoute(builder: (context) => const PaymentPage()),
                       );
                     },
                     child: Container(
@@ -127,7 +127,7 @@ class PaymentInfo extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PaymentPage()),
+                        MaterialPageRoute(builder: (context) => const PaymentPage()),
                       );
                     },
                     child: Container(

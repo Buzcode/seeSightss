@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//
+
 class FormHeader extends StatelessWidget {
   const FormHeader({
     Key? key ,
@@ -11,7 +11,7 @@ class FormHeader extends StatelessWidget {
     this.imageHeight = 0.2,
     this.textAlign,
     this.crossAxisAlignment = CrossAxisAlignment.start,
-//
+
   }) : super(key:key);
 
   final Color ? imageColor;

@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:seesights/colors.dart';
 import 'package:seesights/pages/welcome_screen.dart';
 import 'package:seesights/widget/app_large_text.dart';
@@ -60,12 +59,12 @@ class _GreetingPageState extends State<GreetingPage> {
                         children: [
                           AppLargeText(text: "Trips"),
                           AppText(text: titles[index], size: 30),
-                          SizedBox(height: 20),
+                          const SizedBox(height: 20),
                           Container(
                             width: 280,
                             child: Text(
                               tips[index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Appcolors.textColor2,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -73,7 +72,7 @@ class _GreetingPageState extends State<GreetingPage> {
                               textAlign: TextAlign.left,
                             ),
                           ),
-                          SizedBox(height: 40),
+                          const SizedBox(height: 40),
                           // Show button only on the last image
                           if (index == images.length - 1)
                             Container(
@@ -92,7 +91,7 @@ class _GreetingPageState extends State<GreetingPage> {
                                     color: Colors.grey.withOpacity(0.5),
                                     spreadRadius: 2,
                                     blurRadius: 5,
-                                    offset: Offset(0, 3),
+                                    offset: const Offset(0, 3),
                                   ),
                                 ],
                               ),
@@ -101,12 +100,12 @@ class _GreetingPageState extends State<GreetingPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => WelcomeScreen(),
+                                      builder: (context) => const WelcomeScreen(),
                                     ),
                                   );
                                 },
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(
+                                  padding: const EdgeInsets.symmetric(
                                     horizontal: 40,
                                     vertical: 15,
                                   ),

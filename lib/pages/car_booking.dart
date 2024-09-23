@@ -53,7 +53,7 @@ class CarBookingPageState extends State<CarBookingPage> {
       context: context,
       initialDate: initialDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     ).then((pickedDate) {
       if (pickedDate == null) return;
       onDateChanged(pickedDate);
@@ -111,16 +111,16 @@ class CarBookingPageState extends State<CarBookingPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              const Padding(
+                padding:  EdgeInsets.all(16.0),
                 child: Text(
                   'Select Payment Method',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.attach_money, size: 30),
-                title: Text('Cash'),
+                leading: const Icon(Icons.attach_money, size: 30),
+                title: const Text('Cash'),
                 onTap: () => setState(() {
                   _selectedPaymentMethod = 'Cash';
                   Navigator.pop(context);
@@ -128,7 +128,7 @@ class CarBookingPageState extends State<CarBookingPage> {
               ),
               ListTile(
                 leading: Image.asset('assets/images/Apple-Pay.png', height: 30),
-                title: Text('Apple Pay'),
+                title: const Text('Apple Pay'),
                 onTap: () => setState(() {
                   _selectedPaymentMethod = 'Apple Pay';
                   Navigator.pop(context);
@@ -136,7 +136,7 @@ class CarBookingPageState extends State<CarBookingPage> {
               ),
               ListTile(
                 leading: Image.asset('assets/images/google-pay.png', height: 30),
-                title: Text('Google Pay'),
+                title: const Text('Google Pay'),
                 onTap: () => setState(() {
                   _selectedPaymentMethod = 'Google Pay';
                   Navigator.pop(context);
@@ -162,7 +162,7 @@ class CarBookingPageState extends State<CarBookingPage> {
   void _navigateToPaymentPage() {
     if (_selectedPaymentMethod == 'Select Payment Method') {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Please select a payment method'),
         ),
       );
@@ -196,11 +196,11 @@ class CarBookingPageState extends State<CarBookingPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Pickup Date
-              Text(
+              const Text(
                 'Pickup Date:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _presentDatePicker(context, _selectedPickupDate, (pickedDate) {
                   setState(() {
@@ -208,7 +208,7 @@ class CarBookingPageState extends State<CarBookingPage> {
                   });
                 }),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -216,14 +216,13 @@ class CarBookingPageState extends State<CarBookingPage> {
                   child: Text(DateFormat('MMMM dd, yyyy').format(_selectedPickupDate)),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
-              // Pickup Location
-              Text(
+              const Text(
                 'Pickup Location:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _showLocationPicker(context, (location) {
                   setState(() {
@@ -231,7 +230,7 @@ class CarBookingPageState extends State<CarBookingPage> {
                   });
                 }),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -239,14 +238,12 @@ class CarBookingPageState extends State<CarBookingPage> {
                   child: Text(_selectedPickupLocation),
                 ),
               ),
-              SizedBox(height: 8),
-
-              // Pickup City
-              Text(
+              const SizedBox(height: 8),
+              const Text(
                 'Pickup City:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _showCityPicker(context, _selectedPickupLocation, (city) {
                   setState(() {
@@ -255,7 +252,7 @@ class CarBookingPageState extends State<CarBookingPage> {
                   });
                 }),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -263,14 +260,14 @@ class CarBookingPageState extends State<CarBookingPage> {
                   child: Text(_selectedPickupCity),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               // Return City
-              Text(
+              const Text(
                 'Drop-Off:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _showCityPicker(context, _selectedPickupLocation, (city) {
                   setState(() {
@@ -279,7 +276,7 @@ class CarBookingPageState extends State<CarBookingPage> {
                   });
                 }),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -287,26 +284,26 @@ class CarBookingPageState extends State<CarBookingPage> {
                   child: Text(_selectedReturnCity),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               // Estimated Price
               if (_estimatedPrice > 0)
                 Text(
                   'Estimated Price: \$${_estimatedPrice.toStringAsFixed(2)}',
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               // Payment Method
-              Text(
+              const Text(
                 'Payment Method:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _showPaymentMethodPicker(context),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -314,7 +311,7 @@ class CarBookingPageState extends State<CarBookingPage> {
                   child: Text(_selectedPaymentMethod),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               // Book Button
               ElevatedButton(
@@ -364,11 +361,11 @@ class PaymentConfirmationPage extends StatelessWidget {
             Text('Drop-Off: $returnCity'),
             Text('Payment Method: $paymentMethod'),
             Text('Estimated Price: \$${estimatedPrice.toStringAsFixed(2)}'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Payment Successful')),
+                  const SnackBar(content: Text('Payment Successful')),
                 );
                 Navigator.pop(context);
               },

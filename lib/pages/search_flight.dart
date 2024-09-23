@@ -3,6 +3,8 @@ import 'package:seesights/pages/home_screen.dart';
 import 'book_flight.dart';
 
 class SearchFlightPage extends StatefulWidget {
+  const SearchFlightPage({super.key});
+
   @override
   _SearchFlightPageState createState() => _SearchFlightPageState();
 }
@@ -80,7 +82,6 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
       'seats': ['1A', '2B', '3C', '4D'],
       'classes': ['Economy', 'Business', 'First'],
     },
-    // ... Add more flight data here
   ];
 
   Future<void> _selectDate(BuildContext context) async {
@@ -158,7 +159,7 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                     onChanged: (value) {
                       setState(() {
                         selectedDestinationFrom = value;
-                        _filterFlights(); // Filter flights when From changes
+                        _filterFlights();
                       });
                     },
                   ),
@@ -175,7 +176,7 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                     onChanged: (value) {
                       setState(() {
                         selectedDestinationTo = value;
-                        _filterFlights(); // Filter flights when To changes
+                        _filterFlights();
                       });
                     },
                   ),
@@ -183,12 +184,12 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                 const SizedBox(width: 10),
                 TextButton.icon(
                   onPressed: () => _selectDate(context),
-                  icon: Icon(Icons.calendar_today, color: Colors.blue),
+                  icon: const Icon(Icons.calendar_today, color: Colors.blue),
                   label: Text(
                     selectedDate == null
                         ? 'Select Date'
                         : '${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}',
-                    style: TextStyle(color: Colors.blue),
+                    style: const TextStyle(color: Colors.blue),
                   ),
                 ),
               ],
@@ -201,27 +202,27 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                   final flight = filteredFlights[index];
                   return Card(
                     child: Container(
-                      padding: EdgeInsets.all(16.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             '${flight['airline']} - ${flight['flightNo']}',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text('${flight['from']} to ${flight['to']}'),
-                          SizedBox(height: 8),
+                          const SizedBox(height: 8),
                           Text('Departure: ${flight['departureTime']}'),
                           Text('Arrival: ${flight['arrivalTime']}'),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'GATE',
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
@@ -231,13 +232,13 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Select Seat',
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   DropdownButton<String>(
                                     value: selectedSeat,
-                                    hint: Text('Select Seat'),
+                                    hint: const Text('Select Seat'),
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         selectedSeat = newValue;
@@ -255,13 +256,13 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Select Class',
                                     style: TextStyle(fontWeight: FontWeight.bold),
                                   ),
                                   DropdownButton<String>(
                                     value: selectedClass,
-                                    hint: Text('Select Class'),
+                                    hint: const Text('Select Class'),
                                     onChanged: (String? newValue) {
                                       setState(() {
                                         selectedClass = newValue;
@@ -278,17 +279,17 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                               ),
                             ],
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           // Dynamic Pricing based on Class
                           Text(
                             '\$${flight['price'][selectedClass ?? 'Economy']}',
-                            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue, // Bluish background color
-                              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32), // Wider padding
+                              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32), // Wider padding
                             ),
                             onPressed: () {
                               // Navigate to booking or checkout page
@@ -296,19 +297,19 @@ class _SearchFlightPageState extends State<SearchFlightPage> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => BookFlightUI(
-                                    date: selectedDate!, // Make sure selectedDate is not null before navigation
+                                    date: selectedDate!,
                                     destinationFrom: flight['from'],
                                     destinationTo: flight['to'],
-                                    flightClass: selectedClass ?? 'Economy', // Default to Economy if no class selected
+                                    flightClass: selectedClass ?? 'Economy',
                                     price: flight['price'][selectedClass ?? 'Economy'],
-                                    seat: selectedSeat!, // Make sure selectedSeat is not null
+                                    seat: selectedSeat!,
                                   ),
                                 ),
                               );
                             },
-                            child: Text('Book Flight'),
+                            child: const Text('Book Flight'),
                           ),
-                          SizedBox(height: 16),
+                          const SizedBox(height: 16),
                         ],
                       ),
                     ),

@@ -32,7 +32,7 @@ class _DetailPageState extends State<DetailPage> {
                 child: Container(
                   width: double.maxFinite,
                   height: 350,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage("assets/images/santorini.png"),
                         fit: BoxFit.cover
@@ -45,7 +45,7 @@ class _DetailPageState extends State<DetailPage> {
                 top: 70,
                 child: Row(
                   children: [
-                    IconButton(onPressed: (){}, icon: Icon(Icons.menu),
+                    IconButton(onPressed: (){}, icon: const Icon(Icons.menu),
                       color: Colors.white,
 
                     )
@@ -58,7 +58,7 @@ class _DetailPageState extends State<DetailPage> {
                   padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
                   width: MediaQuery.of(context).size.width,
                   height: 500,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(30),
@@ -75,15 +75,15 @@ class _DetailPageState extends State<DetailPage> {
                           AppLargeText(text: "150k BDT", color: Appcolors.maincolor)
                         ],
                       ),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Row(
                         children: [
-                          Icon(Icons.location_on,color: Appcolors.maincolor,),
-                          SizedBox(width: 5,),
+                          const Icon(Icons.location_on,color: Appcolors.maincolor,),
+                          const SizedBox(width: 5,),
                           AppText(text: "Satorini-Land, Greece", color: Appcolors.textColor1,)
                         ],
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       Row(
                         children: [
                           Wrap(
@@ -91,16 +91,16 @@ class _DetailPageState extends State<DetailPage> {
                               return Icon(Icons.star, color: index<gottenStars ? Appcolors.starColor : Appcolors.textColor2);
                             }),
                           ),
-                          SizedBox(width: 10,),
+                          const SizedBox(width: 10,),
                           AppText(text: "(4.0)", color: Appcolors.textColor2,),
 
                         ],
                       ),
-                      SizedBox(height: 25,),
+                      const SizedBox(height: 25,),
                       AppLargeText(text: "People" , color: Colors.black.withOpacity(0.8), size:20,),
-                      SizedBox(height: 5,),
+                      const SizedBox(height: 5,),
                       AppText(text: "Number of people in your group" , color:Appcolors.maincolor,),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       Wrap(
                         children: List.generate(5, (index){
                           return InkWell(
@@ -122,9 +122,9 @@ class _DetailPageState extends State<DetailPage> {
                           );
                         }),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       AppLargeText(text: "Description" , color:Colors.black.withOpacity(0.8) , size: 20,),
-                      SizedBox(height: 10,),
+                      const SizedBox(height: 10,),
                       AppText(text: "Adventure or relaxation? Santorini has it all. Hike volcanic trails, explore hidden beaches, or unwind in luxurious spas - Greece's gem awaits!" , color: Appcolors.mainTextColor,),
 
 
@@ -145,7 +145,7 @@ class _DetailPageState extends State<DetailPage> {
                     isIcon: true,
                   icon: Icons.favorite_border,
                 ),
-                SizedBox(width: 20,),
+                const SizedBox(width: 20,),
                 ResponsiveButton(
                   isResponsive: true,
                 ),

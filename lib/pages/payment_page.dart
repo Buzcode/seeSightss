@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class PaymentPage extends StatelessWidget {
+  const PaymentPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment'),
+        title: const Text('Payment'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
             TextField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Card Number',
                 border: OutlineInputBorder(),
                 hintText: 'XXXX XXXX XXXX XXXX',
@@ -25,12 +27,12 @@ class PaymentPage extends StatelessWidget {
                 CardNumberInputFormatter(),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Row(
               children: <Widget>[
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'Expiry Date',
                       border: OutlineInputBorder(),
                       hintText: 'MM/YY',
@@ -43,10 +45,10 @@ class PaymentPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(width: 16),
+                const SizedBox(width: 16),
                 Expanded(
                   child: TextField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: 'CVV',
                       border: OutlineInputBorder(),
                       hintText: 'XXX',
@@ -60,40 +62,39 @@ class PaymentPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16),
-            TextField(
+            const SizedBox(height: 16),
+            const TextField(
               decoration: InputDecoration(
                 labelText: 'Cardholder Name',
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.text,
             ),
-            SizedBox(height: 32),
+            const SizedBox(height: 32),
             ElevatedButton(
               onPressed: () {
-                // Handle payment processing here
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
                     return AlertDialog(
-                      title: Text('Payment Successful'),
-                      content: Text('Your payment has been processed successfully.'),
+                      title: const Text('Payment Successful'),
+                      content: const Text('Your payment has been processed successfully.'),
                       actions: <Widget>[
                         TextButton(
                           onPressed: () {
                             Navigator.of(context).pop();
                           },
-                          child: Text('OK'),
+                          child: const Text('OK'),
                         ),
                       ],
                     );
                   },
                 );
               },
-              child: Text('Pay Now'),
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
               ),
+              child: const Text('Pay Now'),
             ),
           ],
         ),

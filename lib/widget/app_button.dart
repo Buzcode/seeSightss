@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:seesights/widget/app_text.dart';
 
 
-import '../colors.dart';
-
 class AppButton extends StatelessWidget {
   final Color color;
   String? text;
@@ -12,7 +10,7 @@ class AppButton extends StatelessWidget {
   double size;
   final Color borderColor;
   bool isIcon;
-   AppButton({Key? key,
+   AppButton({super.key,
      this.isIcon = false,
      this.text = 'Hi',
      this.icon,
@@ -20,7 +18,7 @@ class AppButton extends StatelessWidget {
    required this.color,
    required this.backgroundColor,
    required this.borderColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +33,6 @@ class AppButton extends StatelessWidget {
   borderRadius: BorderRadius.circular(15),
   color: backgroundColor),
       child: isIcon == false? Center(child: AppText(text : text! , color: color,)):Center(child: Icon(icon , color: color,)),
-);;
+);
   }
 }

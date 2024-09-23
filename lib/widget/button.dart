@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:seesights/widget/app_text.dart';
 import '../colors.dart';
@@ -7,7 +7,7 @@ class ResponsiveButton extends StatelessWidget {
   final bool? isResponsive;
   final double? width;
 
-  ResponsiveButton({super.key, this.width = 110, this.isResponsive = false});
+  const ResponsiveButton({super.key, this.width = 110, this.isResponsive = false});
 
   @override
   Widget build(BuildContext context) {

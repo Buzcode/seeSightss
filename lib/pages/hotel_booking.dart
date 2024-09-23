@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:seesights/pages/hotel_payment.dart'; // Import for date formatting
+import 'package:seesights/pages/hotel_payment.dart';
 
 class BookingPage extends StatefulWidget {
+  const BookingPage({super.key});
+
   @override
   _BookingPageState createState() => _BookingPageState();
 }
 
 class _BookingPageState extends State<BookingPage> {
   DateTime _selectedArrivalDate = DateTime.now();
-  DateTime _selectedDepartureDate = DateTime.now().add(Duration(days: 1));
+  final DateTime _selectedDepartureDate = DateTime.now().add(const Duration(days: 1));
   int _selectedNumberOfGuests = 1;
 
   void _presentDatePicker(BuildContext context) {
@@ -17,7 +19,7 @@ class _BookingPageState extends State<BookingPage> {
       context: context,
       initialDate: _selectedArrivalDate,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     ).then((pickedDate) {
       if (pickedDate == null) return;
       setState(() {
@@ -43,7 +45,7 @@ class _BookingPageState extends State<BookingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Your Stay'),
+        title: const Text('Book Your Stay'),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -52,15 +54,15 @@ class _BookingPageState extends State<BookingPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Arrival Date
-              Text(
+              const Text(
                 'Check-in:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _presentDatePicker(context),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -70,18 +72,18 @@ class _BookingPageState extends State<BookingPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               // Departure Date
-              Text(
+              const Text(
                 'Check-out:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               InkWell(
                 onTap: () => _presentDatePicker(context),
                 child: Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(8),
@@ -91,18 +93,18 @@ class _BookingPageState extends State<BookingPage> {
                   ),
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
 
               // Number of Guests
-              Text(
+              const  Text(
                 'Number of Guests:',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 8),
+              const SizedBox(height: 8),
               Row(
                 children: [
                   IconButton(
-                    icon: Icon(Icons.remove),
+                    icon: const Icon(Icons.remove),
                     onPressed: () {
                       setState(() {
                         if (_selectedNumberOfGuests > 1) {
@@ -113,7 +115,7 @@ class _BookingPageState extends State<BookingPage> {
                   ),
                   Text('$_selectedNumberOfGuests'),
                   IconButton(
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                     onPressed: () {
                       setState(() {
                         _selectedNumberOfGuests++;
@@ -122,12 +124,12 @@ class _BookingPageState extends State<BookingPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
 
               // Book Now Button
               ElevatedButton(
                 onPressed: _navigateToPaymentPage,
-                child: Text('Book Now'),
+                child: const Text('Book Now'),
               ),
             ],
           ),

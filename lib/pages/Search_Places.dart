@@ -54,9 +54,9 @@ class _SearchPageState extends State<SearchPage> {
 
   List<Place> getFilteredPlaces() {
     if (_searchTerm.isEmpty) {
-      return places; // Show all places if no search term
+      return places;
     } else {
-      return places.where((place) => place.name.toLowerCase().contains(_searchTerm.toLowerCase())).toList(); // Filter places
+      return places.where((place) => place.name.toLowerCase().contains(_searchTerm.toLowerCase())).toList();
     }
   }
 
@@ -107,8 +107,8 @@ class _SearchPageState extends State<SearchPage> {
                         MaterialPageRoute(
                           builder: (context) => BookingConfirmationPage(
                             place: place,
-                            selectedDate: _selectedDate, // Pass _selectedDate from SearchPage
-                            selectedPersons: _selectedPersons, // Pass _selectedPersons from SearchPage
+                            selectedDate: _selectedDate,
+                            selectedPersons: _selectedPersons,
                           ),
                         ),
                       );
@@ -241,7 +241,7 @@ class _PlaceCardState extends State<PlaceCard> {
                 // Book Now Button
                 ElevatedButton(
                   onPressed: () {
-                    // Pass selected date and persons to the next page
+
                     widget.onBookNow();
                   },
                   style: ElevatedButton.styleFrom(

@@ -39,7 +39,7 @@ class _BookFlightUIState extends State<BookFlightUI> {
         backgroundColor: Colors.white,
         title: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.black, fontSize: 32),
+            style: const TextStyle(color: Colors.black, fontSize: 32),
             children: [
               TextSpan(
                 text: "Flight",
@@ -62,7 +62,7 @@ class _BookFlightUIState extends State<BookFlightUI> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     "Personal Information",
                     style: GoogleFonts.overpass(
@@ -70,20 +70,19 @@ class _BookFlightUIState extends State<BookFlightUI> {
                       fontSize: 18,
                     ),
                   ),
-                  SizedBox(height: 5), // Reduce the space here
+                  const SizedBox(height: 5), // Reduce the space here
 
-                  // Form Fields - Use standard TextFormField for consistency
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: "Full Name",
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: const Icon(Icons.person),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
-                        fillColor: Color(0xFFF1F5FB), // Light bluish background color
+                        fillColor: const Color(0xFFF1F5FB), // Light bluish background color
                       ),
                       keyboardType: TextInputType.text,
                       onSaved: (value) => _fullName = value ?? '',
@@ -100,12 +99,12 @@ class _BookFlightUIState extends State<BookFlightUI> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: "Passport Number",
-                        prefixIcon: Icon(Icons.book),
+                        prefixIcon: const Icon(Icons.book),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
-                        fillColor: Color(0xFFF1F5FB), // Light bluish background color
+                        fillColor: const Color(0xFFF1F5FB), // Light bluish background color
                       ),
                       keyboardType: TextInputType.text,
                       onSaved: (value) => _passportNumber = value ?? '',
@@ -122,12 +121,12 @@ class _BookFlightUIState extends State<BookFlightUI> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: "Email",
-                        prefixIcon: Icon(Icons.email),
+                        prefixIcon: const Icon(Icons.email),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
-                        fillColor: Color(0xFFF1F5FB), // Light bluish background color
+                        fillColor: const Color(0xFFF1F5FB), // Light bluish background color
                       ),
                       keyboardType: TextInputType.emailAddress,
                       onSaved: (value) => _email = value ?? '',
@@ -146,12 +145,12 @@ class _BookFlightUIState extends State<BookFlightUI> {
                     child: TextFormField(
                       decoration: InputDecoration(
                         labelText: "Phone",
-                        prefixIcon: Icon(Icons.phone),
+                        prefixIcon: const Icon(Icons.phone),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         filled: true,
-                        fillColor: Color(0xFFF1F5FB), // Light bluish background color
+                        fillColor: const Color(0xFFF1F5FB), // Light bluish background color
                       ),
                       keyboardType: TextInputType.phone,
                       onSaved: (value) => _phone = value ?? '',
@@ -165,11 +164,11 @@ class _BookFlightUIState extends State<BookFlightUI> {
                       },
                     ),
                   ),
-                  SizedBox(height: 20), // Reduce space before the button
+                  const SizedBox(height: 20), // Reduce space before the button
                   Center(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+                        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 32),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:seesights/Login/signup_controller.dart';
 import 'package:seesights/Login/signup_footer_widget.dart';
 import 'package:seesights/Login/signup_form_widget.dart';
 import 'package:seesights/Login/signup_header.dart';

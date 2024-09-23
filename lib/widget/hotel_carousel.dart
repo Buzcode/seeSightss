@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:seesights/Models/hotel_model.dart';
 
 class HotelCarousel extends StatelessWidget {
+  const HotelCarousel({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text(
+              const Text(
                 'Exclusive Hotels',
                 style: TextStyle(
                   fontSize: 22.0,
@@ -42,7 +44,7 @@ class HotelCarousel extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               Hotel hotel = hotels[index];
               return Container(
-                margin: EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(10.0),
                 width: 240.0,
                 child: Stack(
                   alignment: Alignment.topCenter,
@@ -57,22 +59,22 @@ class HotelCarousel extends StatelessWidget {
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(24.0),
+                          padding: const EdgeInsets.all(24.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               Text(
                                 hotel.name, // Use hotel.name directly
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18.0, // Reduced font size
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 1.2,
                                 ),
                               ),
-                              SizedBox(height: 2.0),
+                              const SizedBox(height: 2.0),
                               Text(
                                 '\$${hotel.price} / night',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14.0, // Reduced font size
                                   fontWeight: FontWeight.w600,
                                 ),
@@ -86,7 +88,7 @@ class HotelCarousel extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20.0),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black26,
                             offset: Offset(0.0, 2.0),

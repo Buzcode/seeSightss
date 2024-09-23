@@ -3,10 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:seesights/firebase_options.dart';
 import 'package:seesights/pages/authentication_repository.dart';
-import 'package:seesights/pages/search_flight.dart';
 import 'package:seesights/pages/splash_screen.dart';
 import 'package:seesights/theme.dart';
-import 'package:seesights/pages/greeting_page.dart';
 
 
 void main() async {
