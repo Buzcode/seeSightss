@@ -5,7 +5,7 @@ import 'package:seesights/Login/forget_pass_bottom_part.dart';
 import 'package:seesights/pages/home_screen.dart';
 import 'package:seesights/text_strings.dart';
 import '../sizes.dart';
-import 'package:seesights/pages/authentication_repository.dart'; // Import new class
+import 'package:seesights/pages/authentication_repository.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class _LoginFormState extends State<LoginForm> {
           _passwordController.text.trim(), // Pass the password
         );
         if (userCredential != null) {
-          // After successful login, navigate to HomeScreen
+
           Get.offAll(() => HomeScreen());
         }
       } on FirebaseAuthException catch (e) {
