@@ -2,8 +2,6 @@
 import 'package:get/get.dart';
 import 'package:seesights/pages/greeting_page.dart';
 
-
-
 class SplashScreenController extends GetxController{
   static SplashScreenController get find => Get.find();
 

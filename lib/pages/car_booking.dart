@@ -16,14 +16,14 @@ class CarBookingPageState extends State<CarBookingPage> {
   String _selectedPaymentMethod = 'Select Payment Method';
   double _estimatedPrice = 0;
 
-  // Define a Map for locations with their respective cities
+  //  Map for locations with their respective cities
   final Map<String, List<String>> locationsWithCities = {
     'New York': ['Manhattan', 'Brooklyn', 'Queens', 'The Bronx', 'Staten Island'],
     'Paris': ['Paris Center', 'Eiffel Tower', 'Louvre Museum', 'Montmartre', 'Latin Quarter'],
     'London': ['Buckingham Palace', 'Tower Bridge', 'Big Ben', 'Hyde Park', 'Covent Garden'],
   };
 
-  // Define price ranges for different locations
+  //  price ranges for different locations
   final Map<String, Map<String, double>> priceRanges = {
     'New York': {
       'Manhattan': 20.0,
