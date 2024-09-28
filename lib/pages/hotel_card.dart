@@ -139,7 +139,7 @@ class _HotelScreenState extends State<HotelScreen> {
                 hintText: 'Search by location',
                 prefixIcon: const Icon(Icons.search),
                 filled: true,
-                fillColor: Colors.blue.shade100, // Add a light blue fill
+                fillColor: Colors.blue.shade100,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(25.0),
                   borderSide: BorderSide.none,
